@@ -42,25 +42,25 @@ public class DARK_EVIL extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnlFrontal.setBackground(new java.awt.Color(204, 204, 204));
-        pnlFrontal.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "DARK_EVIL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        pnlFrontal.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null), null, null, null, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         pnlDatos.setBackground(new java.awt.Color(153, 153, 153));
-        pnlDatos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Students Data", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        pnlDatos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, null, null, null, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         txtName.setToolTipText("Students Name");
-        txtName.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Name", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtName.setBorder(javax.swing.BorderFactory.createTitledBorder(null, null, null, null, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         txtLastName.setToolTipText("Last Name");
-        txtLastName.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LastName", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtLastName.setBorder(javax.swing.BorderFactory.createTitledBorder(null, null, null, null, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         txtMatricle.setToolTipText("Matricle");
-        txtMatricle.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Matricle", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtMatricle.setBorder(javax.swing.BorderFactory.createTitledBorder(null, null, null, null, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         txtEmail.setToolTipText("Email");
-        txtEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Email", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(null, null, null, null, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         txtSubject.setToolTipText("Subject");
-        txtSubject.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Subject", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtSubject.setBorder(javax.swing.BorderFactory.createTitledBorder(null, null, null, null, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +123,7 @@ public class DARK_EVIL extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblEstudiantes);
 
         txtSearch.setToolTipText("Search");
-        txtSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
+        txtSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, null, null, null, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         btnSearch.setText("Search");
 
@@ -147,9 +147,9 @@ public class DARK_EVIL extends javax.swing.JFrame {
                         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlFrontalLayout.createSequentialGroup()
                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(12, 12, 12)))
                 .addContainerGap())
         );
         pnlFrontalLayout.setVerticalGroup(
