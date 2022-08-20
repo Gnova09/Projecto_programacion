@@ -3,7 +3,7 @@ import java.sql.*;
 
 public class ConexionSQL {
     
-        private static Connection SqlCn;
+         Connection SqlCn;
 	private final String Nombre_db ="login_database";
 	private final String usuario ="root";
 	private final String password ="1009";

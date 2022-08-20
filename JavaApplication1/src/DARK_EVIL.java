@@ -1,17 +1,30 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+ // estas son las librerias //
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+ 
 
 /**
  *
  * @author USER
  */
 public class DARK_EVIL extends javax.swing.JFrame {
-    private final ConexionSQL mysql = new ConexionSQL();
+     ConexionSQL mysql = new ConexionSQL();
+    Connection SqlCn = mysql.getConnection();
     
     public DARK_EVIL() {
         initComponents();
+        mostrarTabla(); // este es el metedo mostrar datos de la tabla
+        limpiarCmp(); // este es el otro metodo que para limpiar los txtFelt
+        txtName.requestFucus();
     }
 
     /**
@@ -139,7 +152,7 @@ public class DARK_EVIL extends javax.swing.JFrame {
                 .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlFrontalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
                     .addGroup(pnlFrontalLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,9 +160,9 @@ public class DARK_EVIL extends javax.swing.JFrame {
                         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlFrontalLayout.createSequentialGroup()
                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(55, 55, 55)
                         .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlFrontalLayout.setVerticalGroup(
@@ -185,6 +198,21 @@ public class DARK_EVIL extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
        mysql.getConnetion();
+       String insrsql = "insert into Estudiantes(Nombre,Apellidos,CorreoEletronico,Matricula,Materia) values (?,?,?,?,?)";
+       try{
+           PreparedStatement ps;
+           ps = SqlCn.prepareStatement(insrsql);
+           ps.setString(1, txtName.getText());
+           ps.setString(2, txtLastName.getText());
+           ps.setString(3, txtEmail.getText());
+           ps.setString(4, txtMatricle.getText());
+           ps.setString(5, txtSubject.getText());
+           ps.executeUpdate();
+           mostrarTabla();
+           JOptionPane.showMessageDialog(rootPane,"El resgitro de la tabla se inserto corretamete:");
+       }catch(SQLException ex){
+           JOptionPane.showMessageDialog(rootPane,"Error al agregar datos a la tabla:" + ex);
+       }
     }//GEN-LAST:event_btnAddActionPerformed
 
     /**
@@ -239,4 +267,46 @@ public class DARK_EVIL extends javax.swing.JFrame {
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSubject;
     // End of variables declaration//GEN-END:variables
+
+
+ private void mostrarTabla() {
+        DefaultTableModel tbl = new DefaultTableModel();
+        tbl.addColumn("idStudents");
+        tbl.addColumn("Name");
+        tbl.addColumn("LastName");
+        tbl.addColumn("Email");
+        tbl.addColumn("Matricle");
+        tbl.addColumn("Subject");
+        tblEstudiantes.setModel(tbl);
+        String conslt = "select * from Estudiantes order by Nombre;";
+        String Dt[] = new String[6];
+        Statement st;
+        try{
+            st =(Statement) SqlCn.createStatement();
+            ResultSet rs = st.executeQuery(conslt);
+            while(rs.next()){
+               Dt[0]= rs.getString(1);
+               Dt[1]= rs.getString(2);
+               Dt[2]= rs.getString(3);
+               Dt[3]= rs.getString(4);
+               Dt[4]= rs.getString(5);
+               Dt[5]= rs.getString(6);
+               tbl.addRow(Dt);
+            }
+            JOptionPane.showMessageDialog(rootPane,"Los datos de la tabla se insertaron corretamente:" );
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(rootPane,"Error en insertar los datos de la tabla :" + ex);
+        }
+    }
+     private void limpiarCmP() {
+        txtName.setText("");
+        txtLastName.setText("");
+        txtEmail.setText("");
+        txtMatricle.setText("");
+        txtSubject.setText("");
+        txtName.requestFocus();
+    }
+    
 }
+
+
