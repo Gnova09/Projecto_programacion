@@ -12,7 +12,9 @@ public class DARK_EVIL extends javax.swing.JFrame {
 
     ConexionSQL mysql = new ConexionSQL();
     Connection SqlCn = mysql.getConnetion();
-
+    
+    
+    
     private void limpiarCmP() {
         txtName.setText("");
         txtLastName.setText("");
@@ -136,6 +138,11 @@ public class DARK_EVIL extends javax.swing.JFrame {
         txtSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12))); // NOI18N
 
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -221,21 +228,30 @@ public class DARK_EVIL extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "El resgitro de la tabla se inserto corretamete:");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, "Error al agregar datos a la tabla:" + ex);
+            
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-            
-                new DeleteEst().setVisible(true);
-                
-
+        int numero= Integer.parseInt(JOptionPane.showInputDialog("Ingrese un ID para eliminar"));       
+        
+        if (mysql.DeleteUser(numero)== true){
+         mostrarTabla();
+         }
+        /*dispose();
+                new DeleteEst().setVisible(true);*/
+      
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,5 +335,4 @@ public class DARK_EVIL extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error en insertar los datos de la tabla :" + ex);
         }
     }
-
 }

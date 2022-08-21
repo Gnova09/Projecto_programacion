@@ -34,7 +34,7 @@ public class ConexionSQL {
 		return SqlCn;
 	}
         ///////METODO PARA ELIMINAR BY ID///////
-        public boolean DeleteUser(String ID) {
+        public boolean DeleteUser(int ID) {
 		boolean valid = false;
 		 String statment= "delete from estudiantes where idEstudiantes = '"+ID+"'";
 		try {
