@@ -13,8 +13,6 @@ public class DARK_EVIL extends javax.swing.JFrame {
     ConexionSQL mysql = new ConexionSQL();
     Connection SqlCn = mysql.getConnetion();
     
-    
-    
     private void limpiarCmP() {
         txtName.setText("");
         txtLastName.setText("");
@@ -26,7 +24,7 @@ public class DARK_EVIL extends javax.swing.JFrame {
 
     public DARK_EVIL() {
         initComponents();
-        mostrarTabla(); // este es el metedo mostrar datos de la tabla
+       mostrarTabla(0,null); // este es el metedo mostrar datos de la tabla
         limpiarCmP(); // este es el otro metodo que para limpiar los txtFelt
         txtName.requestFocus();
     }
@@ -50,11 +48,13 @@ public class DARK_EVIL extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        cboxFiltro = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnlFrontal.setBackground(new java.awt.Color(204, 204, 204));
-        pnlFrontal.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "DARK_EVIL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        pnlFrontal.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Gestor de Estudiantes", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
 
         pnlDatos.setBackground(new java.awt.Color(153, 153, 153));
         pnlDatos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Students Data", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
@@ -82,6 +82,11 @@ public class DARK_EVIL extends javax.swing.JFrame {
         });
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDatosLayout = new javax.swing.GroupLayout(pnlDatos);
         pnlDatos.setLayout(pnlDatosLayout);
@@ -158,6 +163,17 @@ public class DARK_EVIL extends javax.swing.JFrame {
             }
         });
 
+        cboxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mostrar todo", "idEstudiantes", "Nombre", "Apellidos", "CorreoEletronico", "Matricula", " " }));
+        cboxFiltro.setToolTipText("");
+        cboxFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxFiltroActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setText("Search for :");
+
         javax.swing.GroupLayout pnlFrontalLayout = new javax.swing.GroupLayout(pnlFrontal);
         pnlFrontal.setLayout(pnlFrontalLayout);
         pnlFrontalLayout.setHorizontalGroup(
@@ -169,13 +185,18 @@ public class DARK_EVIL extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
                     .addGroup(pnlFrontalLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlFrontalLayout.createSequentialGroup()
                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)
-                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlFrontalLayout.setVerticalGroup(
@@ -185,7 +206,11 @@ public class DARK_EVIL extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(pnlFrontalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlFrontalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlFrontalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(cboxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -224,11 +249,10 @@ public class DARK_EVIL extends javax.swing.JFrame {
             ps.setString(4, txtMatricle.getText());
             ps.setString(5, txtSubject.getText());
             ps.executeUpdate();
-            mostrarTabla();
+            mostrarTabla(0,null);
             JOptionPane.showMessageDialog(rootPane, "El resgitro de la tabla se inserto corretamete:");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, "Error al agregar datos a la tabla:" + ex);
-            
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -237,11 +261,9 @@ public class DARK_EVIL extends javax.swing.JFrame {
         int numero= Integer.parseInt(JOptionPane.showInputDialog("Ingrese un ID para eliminar"));       
         
         if (mysql.DeleteUser(numero)== true){
-         mostrarTabla();
+         mostrarTabla(0,null);
          }
-        /*dispose();
-                new DeleteEst().setVisible(true);*/
-      
+              
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -251,7 +273,23 @@ public class DARK_EVIL extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+        
+        int opcion = cboxFiltro.getSelectedIndex();
+        String buscar = txtSearch.getText();
+        mostrarTabla(opcion,buscar);
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void cboxFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxFiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxFiltroActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+       
+       dispose();
+       new UpdateUser().setVisible(true);
+        
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,6 +332,8 @@ public class DARK_EVIL extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> cboxFiltro;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlDatos;
     private javax.swing.JPanel pnlFrontal;
@@ -306,7 +346,7 @@ public class DARK_EVIL extends javax.swing.JFrame {
     private javax.swing.JTextField txtSubject;
     // End of variables declaration//GEN-END:variables
 
-    private void mostrarTabla() {
+    private void mostrarTabla(int filtro , String valor) {
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("idStudents");
         tbl.addColumn("Name");
@@ -315,24 +355,46 @@ public class DARK_EVIL extends javax.swing.JFrame {
         tbl.addColumn("Matricle");
         tbl.addColumn("Subject");
         tblEstudiantes.setModel(tbl);
-        String conslt = "select * from estudiantes order by Nombre;";
+        String conslt = "";
         String Dt[] = new String[6];
         Statement st;
-        try {
-            st = (Statement) SqlCn.createStatement();
-            ResultSet rs = st.executeQuery(conslt);
-            while (rs.next()) {
-                Dt[0] = rs.getString(1);
-                Dt[1] = rs.getString(2);
-                Dt[2] = rs.getString(3);
-                Dt[3] = rs.getString(4);
-                Dt[4] = rs.getString(5);
-                Dt[5] = rs.getString(6);
-                tbl.addRow(Dt);
+        if (filtro == 0) {
+            conslt = "select * from Estudiantes";
+        } else {
+            if (filtro == 1 && valor != null) {
+                conslt = "select * from Estudiantes where idEstudiantes = '" + valor + "'";
+            } else {
+                if (filtro == 2 && valor != null) {
+                    conslt = "select * from Estudiantes where Nombre = '" + valor + "'";
+                } else {
+                    if (filtro == 3 && valor != null) {
+                        conslt = "select * from Estudiantes where Apellidos ='" + valor + "'";
+                    } else {
+                        if (filtro == 4 && valor != null) {
+                            conslt = "select * from Estudiantes where CorreoEletronico ='" + valor + "'";
+                        } else {
+                            if (filtro == 5 && valor != null) {
+                                conslt = "select * from Estudiantes where Matricula = '" + valor + "'";
+                            }
+                        }
+                    }
+                }
             }
-            System.out.println("Los datos de la tabla se insertaron corretamente");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, "Error en insertar los datos de la tabla :" + ex);
+        }
+        try{
+            st =(Statement) SqlCn.createStatement();
+            ResultSet rs = st.executeQuery(conslt);
+            while(rs.next()){
+               Dt[0]= rs.getString(1);
+               Dt[1]= rs.getString(2);
+               Dt[2]= rs.getString(3);
+               Dt[3]= rs.getString(4);
+               Dt[4]= rs.getString(5);
+               Dt[5]= rs.getString(6);
+               tbl.addRow(Dt);
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(rootPane,"Error en insertar los datos de la tabla :" + ex);
         }
     }
 }

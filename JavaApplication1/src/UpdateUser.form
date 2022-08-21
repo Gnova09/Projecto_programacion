@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="txtID" min="-2" pref="203" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="btnUpdate" min="-2" pref="84" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="Cancelar" min="-2" pref="84" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="txtName" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
+                  <Component id="txtLastName" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
+                  <Component id="txtEmail" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
+                  <Component id="txtMatricle" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
+                  <Component id="txtSubject" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <Component id="txtID" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="txtName" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="txtLastName" min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="txtEmail" min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="txtMatricle" min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+              <Component id="txtSubject" min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnUpdate" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="Cancelar" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JTextField" name="txtName">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Students Name"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder justification="1" title="Name">
+              <Font PropertyName="font" name="Arial" size="12" style="1"/>
+            </TitledBorder>
+          </Border>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtLastName">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Last Name"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder justification="1" title="LastName">
+              <Font PropertyName="font" name="Arial" size="12" style="1"/>
+            </TitledBorder>
+          </Border>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtEmail">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Email"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder justification="1" title="Email">
+              <Font PropertyName="font" name="Arial" size="12" style="1"/>
+            </TitledBorder>
+          </Border>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtMatricle">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Matricle"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder justification="1" title="Matricle">
+              <Font PropertyName="font" name="Arial" size="12" style="1"/>
+            </TitledBorder>
+          </Border>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtSubject">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Subject"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder justification="1" title="Subject">
+              <Font PropertyName="font" name="Arial" size="12" style="1"/>
+            </TitledBorder>
+          </Border>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnUpdate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Update"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtID">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Students Name"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder justification="1" title="ID">
+              <Font PropertyName="font" name="Arial" size="12" style="1"/>
+            </TitledBorder>
+          </Border>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Cancelar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelarActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

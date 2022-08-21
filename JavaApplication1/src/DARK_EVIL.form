@@ -44,7 +44,7 @@
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="2" title="DARK_EVIL">
+            <TitledBorder justification="2" title="Gestor de Estudiantes">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                 <TitledBorder/>
               </Border>
@@ -64,6 +64,10 @@
                       <Component id="jScrollPane1" pref="584" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cboxFiltro" min="-2" pref="111" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txtSearch" min="-2" pref="231" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnSearch" min="-2" pref="93" max="-2" attributes="0"/>
@@ -72,6 +76,7 @@
                           <Component id="btnDelete" min="-2" pref="112" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                           <Component id="btnExit" min="-2" pref="110" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -85,7 +90,13 @@
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="btnSearch" min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="txtSearch" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtSearch" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboxFiltro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="316" max="-2" attributes="0"/>
@@ -231,6 +242,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Update"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -291,6 +305,36 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExitActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cboxFiltro">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="7">
+                <StringItem index="0" value="Mostrar todo"/>
+                <StringItem index="1" value="idEstudiantes"/>
+                <StringItem index="2" value="Nombre"/>
+                <StringItem index="3" value="Apellidos"/>
+                <StringItem index="4" value="CorreoEletronico"/>
+                <StringItem index="5" value="Matricula"/>
+                <StringItem index="6" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboxFiltroActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Search for :"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
