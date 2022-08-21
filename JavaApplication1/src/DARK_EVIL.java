@@ -1,3 +1,4 @@
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -5,13 +6,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
- // estas son las librerias //
+// estas son las librerias //
 
 public class DARK_EVIL extends javax.swing.JFrame {
-     ConexionSQL mysql = new ConexionSQL();
+
+    ConexionSQL mysql = new ConexionSQL();
     Connection SqlCn = mysql.getConnetion();
-    
-    
+
     private void limpiarCmP() {
         txtName.setText("");
         txtLastName.setText("");
@@ -20,14 +21,14 @@ public class DARK_EVIL extends javax.swing.JFrame {
         txtSubject.setText("");
         txtName.requestFocus();
     }
-  
+
     public DARK_EVIL() {
         initComponents();
         mostrarTabla(); // este es el metedo mostrar datos de la tabla
         limpiarCmP(); // este es el otro metodo que para limpiar los txtFelt
         txtName.requestFocus();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -158,7 +159,7 @@ public class DARK_EVIL extends javax.swing.JFrame {
                 .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlFrontalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
                     .addGroup(pnlFrontalLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,7 +192,10 @@ public class DARK_EVIL extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlFrontal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlFrontal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,28 +206,30 @@ public class DARK_EVIL extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       mysql.getConnetion();
-       String insrsql = "insert into Estudiantes(Nombre,Apellidos,CorreoEletronico,Matricula,Materia) values (?,?,?,?,?)";
-       try{
-           PreparedStatement ps;
-           ps = SqlCn.prepareStatement(insrsql);
-           ps.setString(1, txtName.getText());
-           ps.setString(2, txtLastName.getText());
-           ps.setString(3, txtEmail.getText());
-           ps.setString(4, txtMatricle.getText());
-           ps.setString(5, txtSubject.getText());
-           ps.executeUpdate();
-           mostrarTabla();
-           JOptionPane.showMessageDialog(rootPane,"El resgitro de la tabla se inserto corretamete:");
-       }catch(SQLException ex){
-           JOptionPane.showMessageDialog(rootPane,"Error al agregar datos a la tabla:" + ex);
-       }
+        mysql.getConnetion();
+        String insrsql = "insert into Estudiantes(Nombre,Apellidos,CorreoEletronico,Matricula,Materia) values (?,?,?,?,?)";
+        try {
+            PreparedStatement ps;
+            ps = SqlCn.prepareStatement(insrsql);
+            ps.setString(1, txtName.getText());
+            ps.setString(2, txtLastName.getText());
+            ps.setString(3, txtEmail.getText());
+            ps.setString(4, txtMatricle.getText());
+            ps.setString(5, txtSubject.getText());
+            ps.executeUpdate();
+            mostrarTabla();
+            JOptionPane.showMessageDialog(rootPane, "El resgitro de la tabla se inserto corretamete:");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Error al agregar datos a la tabla:" + ex);
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        mysql.DeleteUser("1520");
-        
+            
+                new DeleteEst().setVisible(true);
+                
+
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -284,8 +290,7 @@ public class DARK_EVIL extends javax.swing.JFrame {
     private javax.swing.JTextField txtSubject;
     // End of variables declaration//GEN-END:variables
 
-
- private void mostrarTabla() {
+    private void mostrarTabla() {
         DefaultTableModel tbl = new DefaultTableModel();
         tbl.addColumn("idStudents");
         tbl.addColumn("Name");
@@ -297,25 +302,22 @@ public class DARK_EVIL extends javax.swing.JFrame {
         String conslt = "select * from estudiantes order by Nombre;";
         String Dt[] = new String[6];
         Statement st;
-        try{
-            st =(Statement) SqlCn.createStatement();
+        try {
+            st = (Statement) SqlCn.createStatement();
             ResultSet rs = st.executeQuery(conslt);
-            while(rs.next()){
-               Dt[0]= rs.getString(1);
-               Dt[1]= rs.getString(2);
-               Dt[2]= rs.getString(3);
-               Dt[3]= rs.getString(4);
-               Dt[4]= rs.getString(5);
-               Dt[5]= rs.getString(6);
-               tbl.addRow(Dt);
+            while (rs.next()) {
+                Dt[0] = rs.getString(1);
+                Dt[1] = rs.getString(2);
+                Dt[2] = rs.getString(3);
+                Dt[3] = rs.getString(4);
+                Dt[4] = rs.getString(5);
+                Dt[5] = rs.getString(6);
+                tbl.addRow(Dt);
             }
             System.out.println("Los datos de la tabla se insertaron corretamente");
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(rootPane,"Error en insertar los datos de la tabla :" + ex);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, "Error en insertar los datos de la tabla :" + ex);
         }
     }
-     
-    
+
 }
-
-
